@@ -5,28 +5,21 @@ import (
 	"fmt"
 )
 
-func main() {
-	var size int
-	var b bytes.Buffer
+var (
+	size int
+	b    bytes.Buffer
+)
 
+func main() {
 	fmt.Scanf("%d", &size)
 
 	for i := 0; i < size; i++ {
 		for j := 0; j < size; j++ {
-			if i%2 == 0 {
-				if j%2 == 0 {
-					b.WriteString("#")
-				} else {
-					b.WriteString(" ")
-				}
+			if (i+j)%2 == 0 {
+				b.WriteString("#")
 			} else {
-				if j%2 == 0 {
-					b.WriteString(" ")
-				} else {
-					b.WriteString("#")
-				}
+				b.WriteString(" ")
 			}
-
 		}
 
 		b.WriteString("\n")
