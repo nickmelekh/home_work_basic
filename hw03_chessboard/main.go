@@ -1,5 +1,10 @@
 package main
 
+import "fmt"
+
 func main() {
-	// Place your code here.
+	var size uint16
+	fmt.Scanln(&size)
+
+	fmt.Println("Size: ", size)
 }
