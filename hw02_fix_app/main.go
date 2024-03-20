@@ -1,27 +1,29 @@
-package init
+package main
 
 import (
-	"github.com/fixme_my_friend/hw02_fix_app/printer"
-	"github.com/fixme_my_friend/hw02_fix_app/reader"
-	"github.com/fixme_my_friend/hw02_fix_app/types"
 	"fmt"
+
+	"github.com/nickmelekh/home_work_basic/hw02_fix_app/printer"
+	"github.com/nickmelekh/home_work_basic/hw02_fix_app/reader"
+	"github.com/nickmelekh/home_work_basic/hw02_fix_app/types"
 )
 
-func init() {
-	var path string = "data.json"
-
-	fmt.Printf("Enter data file path: ")
-	fmt.Scanln(&path)
-
+func main() {
+	var path string
 	var err error
 	var staff []types.Employee
 
-	if len(path) == 0 {
-		path = "data.json"
-	} else {
+	fmt.Printf("Enter data file path: ")
+	_, err = fmt.Scanln(&path)
+	if err != nil {
+		return
 	}
 
-	staff, err = reader.ReadJSON(path, -1)
+	if len(path) == 0 {
+		path = "data.json"
+	}
+
+	staff, err = reader.ReadJSON(path)
 
 	fmt.Print(err)
 
